@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="action-sheets-basic-page">
+  <h2>Welcome to Ionic!</h2>
+  <p>
+    This starter project comes with simple tabs-based layout for apps
+    that are going to primarily use a Tabbed UI.
+  </p>
+  <p>
+    Take a look at the <code>src/pages/</code> directory to add or change tabs,
+    update any existing page or create new pages.
+  </p>
+  <button ion-button block (click)="presentActionSheet()">
+    Show Action Sheet
+  </button>
+  <button ion-button block (click)="showAlert()">
+    Show Basic Alert
+  </button>
+  <button ion-button block (click)="showPrompt()">
+    Show Prompt Alert
+  </button>
+  <button ion-button block (click)="showConfirm()">
+    Show Confirm Alert
+  </button>
+  <button ion-button block (click)="showRadio()">
+    Show Radio Alert
+  </button>
+  <button ion-button block (click)="showCheckbox()">
+    Show Chckbox Alert
+  </button>
+  <ion-item>
+    <ion-icon name="logo-twitter" item-start></ion-icon>
+    Followers
+    <ion-badge item-end>260k</ion-badge>
+  </ion-item>
+  <button ion-button color="light">Light</button>
+  <button ion-button>Default</button>
+  <button ion-button color="secondary">Secondary</button>
+  <button ion-button color="danger">Danger</button>
+  <button ion-button color="dark">Dark</button>
+  <button ion-button color="light" outline>Light Outline</button>
+  <button ion-button outline>Primary Outline</button>
+  <button ion-button color="secondary" outline>Secondary Outline</button>
+  <button ion-button color="danger" outline>Danger Outline</button>
+  <button ion-button color="dark" outline>Dark Outline</button>
+  <button ion-button color="light" clear>Light Clear</button>
+  <button ion-button clear>Primary Clear</button>
+  <button ion-button color="secondary" clear>Secondary Clear</button>
+  <button ion-button color="danger" clear>Danger Clear</button>
+  <button ion-button color="dark" clear>Dark Clear</button>
+  <button ion-button color="light" round>Light Round</button>
+  <button ion-button round>Primary Round</button>
+  <button ion-button color="secondary" round>Secondary Round</button>
+  <button ion-button color="danger" round>Danger Round</button>
+  <button ion-button color="dark" round>Dark Round</button>
+  <button ion-button block>Block Button</button>
+  <button ion-button full>Full Button</button>
+  <button ion-button small>Small</button>
+  <button ion-button>Default</button>
+  <button ion-button large>Large</button>
+  <!-- Float the icon left -->
+  <button ion-button icon-start>
+    <ion-icon name="home"></ion-icon>
+    Left Icon
+  </button>
+
+  <!-- Float the icon right -->
+  <button ion-button icon-end>
+    Right Icon
+    <ion-icon name="home"></ion-icon>
+  </button>
+
+  <!-- Only icon (no text) -->
+  <button ion-button icon-only>
+    <ion-icon name="home"></ion-icon>
+  </button>
+
+
+  <ion-item>
+    <ion-label>Daenerys Targaryen</ion-label>
+    <ion-checkbox color="dark" checked="true"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Arya Stark</ion-label>
+    <ion-checkbox disabled="true"></ion-checkbox>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>This column will take 12 columns</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>This column will take 6 columns</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+        This column will be 12 columns wide by default,
+        9 columns at the small breakpoint,
+        6 at the medium breakpoint, 4 at large, and 3 at xl.
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-icon [name]="myIcon"></ion-icon>
+  <ion-icon ios="logo-apple" md="logo-android"></ion-icon>
+
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="kittens">
+        Kittens
+      </ion-segment-button>
+      <ion-segment-button value="puppies">
+        Puppies
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'puppies'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="img/thumbnail-puppy-1.jpg">
+        </ion-thumbnail>
+        <h2>Ruby</h2>
+      </ion-item>
+      ...
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'kittens'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      ...
+    </ion-list>
+  </div>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Gaming</ion-label>
+      <ion-select [(ngModel)]="gaming">
+        <ion-option value="nes">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>
