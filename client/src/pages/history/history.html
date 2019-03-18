@@ -1,0 +1,92 @@
+<ion-header no-border>
+  <ion-navbar>
+    <img src="../../assets/imgs/logo_monitor.png" class="logoimg">
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item padding-left padding-right margin-top="10px">
+    <ion-label>Start Date</ion-label>
+    <ion-buttons>aaa</ion-buttons>
+    <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="today">
+    </ion-datetime>
+    <button ion-button icon-only clear item-end>
+      <ion-icon name="arrow-dropdown"></ion-icon>
+    </button>
+  </ion-item>
+  <ion-item padding-left padding-right margin-top="5px" margin-bottom="5px">
+    <ion-label>End Date</ion-label>
+    <ion-buttons>aaa</ion-buttons>
+    <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="today">
+    </ion-datetime>
+    <button ion-button icon-only clear item-end>
+      <ion-icon name="arrow-dropdown"></ion-icon>
+    </button>
+  </ion-item>
+  <div class="selectmenu">
+    <ion-segment [(ngModel)]="summary">
+      <ion-segment-button value="list">
+        List
+      </ion-segment-button>
+      <ion-segment-button value="chart">
+        Chart
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="summary">
+    <ion-list *ngSwitchCase="'chart'">
+      <canvas baseChart width="400" height="400"
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType">
+      </canvas>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'list'">
+      <ion-card>
+        <ion-card-header><b>Normal Monitor</b></ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              Monitor Time
+              <ion-icon name='time' item-start></ion-icon>
+              <p item-end>6 hour(s)</p>
+            </ion-item>
+            <ion-item>
+              Abnormal Action
+              <ion-icon name='alert' item-start></ion-icon>
+              <p item-end>2</p>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+        <ion-card-header class="test"><b>Sleeping Monitor</b></ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item class="test2">
+              Time Monitored
+              <ion-icon name='time' item-start></ion-icon>
+              <p item-end>3 hour(s)</p>
+            </ion-item>
+            <ion-item>
+              Time Sleeping
+              <ion-icon name='moon' item-start></ion-icon>
+              <p item-end>1 hour(s)</p>
+            </ion-item>
+            <ion-item>
+              Number of Lullaby Played
+              <ion-icon name='musical-note' item-start></ion-icon>
+              <p item-end>2</p>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+
+    </ion-list>
+  </div>
+
+</ion-content>

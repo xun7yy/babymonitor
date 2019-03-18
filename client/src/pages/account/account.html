@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-navbar>
+    <img src="../../assets/imgs/logo_monitor.png" class="logoimg">
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item class="userinfor">
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/Mother.jpg">
+      </ion-thumbnail>
+      <h2>Name: Huiqun Li</h2>
+      <p>Yili's Mum</p>
+      <button ion-button clear item-end>Edit</button>
+    </ion-item>
+  </ion-card>
+  <ion-card class="relateduser">
+    <ion-item (click)="goToRelatedUserPage()">
+      Related Users
+      <ion-icon name='contacts' item-start></ion-icon>
+      <button ion-button item-end icon-only clear>
+        <ion-icon name='arrow-dropright'></ion-icon>
+      </button>
+    </ion-item>
+  </ion-card>
+  <ion-list>
+    <ion-list-header>Setting</ion-list-header>
+    <ion-item>
+      <ion-label>Notification Method</ion-label>
+      <ion-icon name='alert' item-start></ion-icon>
+      <ion-select [(ngModel)]="alertMethod" (ionChange)="alertMethodSend()" item-end >
+        <ion-option value="appAlert" selected>Push Notification</ion-option>
+        <ion-option value="message">SMS</ion-option>
+        <ion-option value="both">Both</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-toggle [checked]="state" (ionChange)="sleepMonitorHandler()"></ion-toggle>
+      <ion-label>
+        Sleeping Monitor
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Start Time</ion-label>
+      <ion-datetime [disabled]="!state" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="sleepTime.timeStarts"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>End Time</ion-label>
+      <ion-datetime [disabled]="!state" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="sleepTime.timeEnds"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lullaby</ion-label>
+      <ion-select [disabled]="!state" [(ngModel)]="lullaby" interface="popover">
+        <ion-option value="song1">Star War Theme</ion-option>
+        <ion-option value="song2">Tetris Theme</ion-option>
+        <ion-option value="song3">Super Mario Intro</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lullaby Length</ion-label>
+      <ion-select [disabled]="!state" [(ngModel)]="lullabyTime" interface="popover">
+        <ion-option value="five">Five Minutes</ion-option>
+        <ion-option value="ten">Ten Minutes</ion-option>
+        <ion-option value="fifteen">Fifteen Minutes</ion-option>
+        <ion-option value="twenty">Twenty Minutes</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <!--<ion-card>-->
+    <!--<ion-item>-->
+      <!--<ion-label>Notification Method</ion-label>-->
+      <!--<ion-icon name='alert' item-start></ion-icon>-->
+      <!--<ion-select item-end>-->
+        <!--<ion-option value="appAlert" selected>Push Notification</ion-option>-->
+        <!--<ion-option value="message">SMS</ion-option>-->
+        <!--<ion-option value="both">Both</ion-option>-->
+      <!--</ion-select>-->
+    <!--</ion-item>-->
+  <!--</ion-card>-->
+  <!--<ion-card>-->
+    <!--<ion-item (click)="goToSleepMonitorSettingPage()">-->
+      <!--Sleep Monitor-->
+      <!--<ion-icon name='moon' item-start></ion-icon>-->
+      <!--<button ion-button item-end icon-only clear>-->
+        <!--<ion-icon name='arrow-dropright'></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-item>-->
+  <!--</ion-card>-->
+</ion-content>

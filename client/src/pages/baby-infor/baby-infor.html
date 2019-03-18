@@ -1,0 +1,47 @@
+<!--
+  Generated template for the BabyInforPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>babyInforPage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form>
+    <ion-item>
+      <img src="../../assets/imgs/baby.JPG">
+      <button ion-button clear class="change">Change photo</button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="babyinf.name" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Age</ion-label>
+      <ion-input [(ngModel)]="babyinf.age" name="age"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-input [(ngModel)]="babyinf.gender" name="gender"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Weight</ion-label>
+      <ion-input [(ngModel)]="babyinf.weight" name="weight"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button clear (click)="save()" type="submit">save</button>
+      <button ion-button clear (click)="close()" type="submit" item-end>cancel</button>
+    </ion-item>
+  </form>
+
+
+
+</ion-content>

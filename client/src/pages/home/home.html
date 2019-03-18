@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <img src="../../assets/imgs/logo_monitor.png" class="logoimg">
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-list>
+      <ion-item class="babyinfor">
+        <ion-thumbnail item-start>
+          <img src="../../assets/imgs/baby.JPG">
+        </ion-thumbnail>
+          <h2>Name: {{babyInformation.name}}</h2>
+          <p>Age: 18 Month</p>
+        <button ion-button clear item-end (click)="openBabyForm()">Edit</button>
+      </ion-item>
+      <ion-item class="statement">
+        {{movemnt}}
+      </ion-item>
+      <ion-item>
+        <div (click)="goTosettingPage()">{{sleepMonitor}}</div>
+        <button ion-button round small icon-start item-end (click)="playMusic()" [disabled]="!this.musicEnabled">
+          <ion-icon name='play' is-active="false"></ion-icon>
+          Lullaby
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-item class="chart-title" no-lines>
+    Real-time Movement Chart
+  </ion-item>
+  <canvas baseChart width="400" height="320"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType">
+  </canvas>
+</ion-content>
