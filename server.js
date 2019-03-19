@@ -15,19 +15,19 @@ var action = "";
 var test = "";
 var alertAction = false;
 var count = 0;
-var percentage =0;
+var percentage = 0;
 var tooActive = false;
 
-var accountSid = 'AC6fb75d429a3a081945f8dc45a6202c5d';
-var authToken = '3689140f138e5a71981addc3edb3f9c9';
+var accountSid = '';
+var authToken = '';
 var twilio = require('twilio');
 var client = new twilio(accountSid, authToken);
 
 var sendMessage = function( msg ) {
     client.messages.create({
         body: msg,
-        to: '+16693503610',  // Text this number
-        from: '+19792698506' // From a valid Twilio number
+        to: '',  // Text this number
+        from: '' // From a valid Twilio number
     }).then(function(message){
         console.log(message.sid);
         console.log('message sent');
