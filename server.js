@@ -1,4 +1,5 @@
 var five = require("johnny-five");
+var config = require("./config");
 var board = new five.Board();
 
 
@@ -18,16 +19,16 @@ var count = 0;
 var percentage = 0;
 var tooActive = false;
 
-var accountSid = '';
-var authToken = '';
+var accountSid = config.accountSid; // your accountSid
+var authToken = config.authToken; // your authToken
 var twilio = require('twilio');
 var client = new twilio(accountSid, authToken);
 
 var sendMessage = function( msg ) {
     client.messages.create({
         body: msg,
-        to: '',  // Text this number
-        from: '' // From a valid Twilio number
+        to: '',  // Your phone number
+        from: '' // a Twilio number
     }).then(function(message){
         console.log(message.sid);
         console.log('message sent');
@@ -46,7 +47,6 @@ server.listen(3000, function() {
 });
 
 function boardHandler() { // wait for board to be ready
-    console.log("------starting");
     var accelerometer = new five.Accelerometer({
         controller: "ADXL335",
         pins: ["A0", "A1", "A2"]
@@ -64,8 +64,6 @@ function boardHandler() { // wait for board to be ready
             action = lay;
         } else {
             action = awake;
-            // var testTime = new Date();
-            // mostRecentTime2 = testTime.getTime();
 
         }
 
@@ -77,8 +75,6 @@ function boardHandler() { // wait for board to be ready
         if (this.acceleration<0.5) {
             sendMessage("Alert: Yili fell from bed!");
             alertAction = true;
-            console.log("Message sent");
-            console.log(alertAction);
         } else {
             alertAction = false;
         }
@@ -100,9 +96,6 @@ function boardHandler() { // wait for board to be ready
             if (count > 0) {
             percentage = count / (activePercentage.length);
             }
-            console.log("count"+count);
-            console.log("percentage"+percentage);
-            // console.log(activePercentage);
             count= 0;
             activePercentage=[];
         }
@@ -125,7 +118,6 @@ function boardHandler() { // wait for board to be ready
         }
         io.sockets.emit('event:accelerometer', chartPointsAcceleration.join(),
             chartPointsRoll.join(), chartPointsZo.join(), action, alertAction, tooActive);
-        // console.log(tooActive);
         tooActive = false;
     }
 
@@ -139,7 +131,6 @@ function boardHandler() { // wait for board to be ready
                     chartPointsZo.join(), action, alertAction, tooActive);
             });
         connection.on('playornot',(playcomment)=>{
-            console.log(playcomment);
             if(playcomment){
                 piezo.play({
                     song: [

@@ -29,9 +29,7 @@ export class HomePage {
 
 
   constructor(public navCtrl: NavController, private ngZone: NgZone, public events: Events, public alertCtrl: AlertController, public modalCtrl: ModalController) {
-    // this.io = io('http://localhost:3000');
-    //this.io = io('192.168.1.73:3000');
-    this.io = io('192.168.0.114:3000');
+    this.io = io('http://localhost:3000');
   }
   goTosettingPage(){
     this.navCtrl.push('TempPage');
