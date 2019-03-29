@@ -1,0 +1,17 @@
+{
+  "name": "finaldraft",
+  "version": "1.0.0",
+  "description": "Baby Monitor",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "author": "huiqun",
+  "license": "MIT",
+  "dependencies": {
+    "johnny-five": "^1.0.0",
+    "socket.io": "^2.2.0",
+    "twilio": "^3.25.0"
+  }
+}

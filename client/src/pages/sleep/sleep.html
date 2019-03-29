@@ -1,0 +1,58 @@
+<!--
+  Generated template for the SleepPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>SleepPage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding-top>
+  <ion-list no-border>
+    <ion-item>
+      <ion-toggle [checked]="state" (ionChange)="sleepMonitorHandler()"></ion-toggle>
+      <ion-label>
+        Sleeping Monitor
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Start Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="sleepTime.timeStarts"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>End Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="sleepTime.timeEnds"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Lullaby</ion-label>
+      <ion-select [(ngModel)]="lullaby" interface="popover">
+        <ion-option value="song1">Never Gonna Give You Up</ion-option>
+        <ion-option value="song2">Tetris Theme</ion-option>
+        <ion-option value="song3">Star War Theme</ion-option>
+        <ion-option value="song4">Super Mario Intro</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Lullaby Length</ion-label>
+      <ion-select [(ngModel)]="lullabyTime" interface="popover">
+        <ion-option value="five">Five Minutes</ion-option>
+        <ion-option value="ten">Ten Minutes</ion-option>
+        <ion-option value="fifteen">Fifteen Minutes</ion-option>
+        <ion-option value="twenty">Twenty Minutes</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+
+  </ion-list>
+
+</ion-content>
