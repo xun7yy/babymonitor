@@ -1,5 +1,12 @@
 {
-  "accountSid": "abc",
-  "authToken": "cde",
-  "useSid": true
+  "linkToPhone": false,
+  "accountSid": "your accountSid",
+  "authToken": "your authToken",
+  "to":"Your phone number",
+  "from":"a Twilio number",
+  "accelerometerX":"A0",
+  "accelerometerY":"A1",
+  "accelerometerZ":"A2",
+  "piezoPin":10,
+  "ip":"http://localhost:3000"
 }

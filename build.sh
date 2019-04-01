@@ -1,6 +1,7 @@
 #!/bin/sh
-npm install socket.io --save
+npm install
 cd client
-npm install socket.io-client --save
-npm install ng2-chart --save
-npm install chart.js --save
+npm install
+
+
+#open -a Terminal ./client
