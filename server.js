@@ -19,25 +19,6 @@ var count = 0;
 var percentage = 0;
 var tooActive = false;
 
-var accountSid = config.accountSid; // your accountSid
-var authToken = config.authToken; // your authToken
-var twilio = require('twilio');
-var client = new twilio(accountSid, authToken);
-
-var sendMessage = function( msg ) {
-    client.messages.create({
-        body: msg,
-        to: '',  // Your phone number
-        from: '' // a Twilio number
-    }).then(function(message){
-        console.log(message.sid);
-        console.log('message sent');
-    }, function(err) {
-        console.log(err);
-    });
-};
-
-
 var ioLib = require('socket.io');
 var io;
 var http = require('http');
@@ -46,12 +27,27 @@ server.listen(3000, function() {
     console.log('Server started');
 });
 
+if(config.linkToPhone) {
+    var accountSid = config.accountSid;
+    var authToken = config.authToken;
+    var twilio = require('twilio');
+    var client = new twilio(accountSid, authToken);
+
+    var sendMessage = function( msg ) {
+        client.messages.create({
+            body: msg,
+            to: config.to,  // Your phone number
+            from: config.from // a Twilio number
+        });
+    };
+}
+
 function boardHandler() { // wait for board to be ready
     var accelerometer = new five.Accelerometer({
         controller: "ADXL335",
-        pins: ["A0", "A1", "A2"]
+        pins: [config.accelerometerX, config.accelerometerY, config.accelerometerZ]
     });
-    var piezo = new five.Piezo(10);
+    var piezo = new five.Piezo(config.piezoPin);
     function accelerometerHandler() {
         if(!io) {
             return;
@@ -73,7 +69,9 @@ function boardHandler() { // wait for board to be ready
         }
 
         if (this.acceleration<0.5) {
-            sendMessage("Alert: Yili fell from bed!");
+            if(config.linkToPhone) {
+                sendMessage("Alert: Yili fell from bed!");
+            }
             alertAction = true;
         } else {
             alertAction = false;
@@ -124,7 +122,6 @@ function boardHandler() { // wait for board to be ready
     accelerometer.on("acceleration", accelerometerHandler);
     io = ioLib.listen(server);
     io.on('connection', function(connection) {
-        console.log('User Connected');
         connection.on('event:acceleration',
             function(chartPointsAcceleration, chartPointsRoll, chartPointsZo, action, alertAction, tooActive) {
                 io.emit('acceleration', chartPointsAcceleration.join(), chartPointsRoll.join(),

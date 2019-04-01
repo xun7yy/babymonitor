@@ -68,13 +68,11 @@ export class HomePage {
         {
           text: 'Cancel',
           handler: data => {
-            console.log('Cancel clicked');
           }
         },
         {
           text: 'Save',
           handler: data => {
-            console.log('Saved clicked');
           }
         }
       ]
@@ -85,7 +83,6 @@ export class HomePage {
     // var data = {message: 'Hello'};
     var babyForm = this.modalCtrl.create('BabyInforPage');
     babyForm.onDidDismiss(data => {
-      console.log(data);
       this.babyInformation.name = data.name;
       this.babyInformation.age = data.age;
     });
@@ -103,7 +100,6 @@ export class HomePage {
       });
       this.events.subscribe('send_alter_method',(alterData) => {
         this.alertMethodHome = alterData;
-        console.log(this.alertMethodHome);
       });
       this.io.on('event:accelerometer', (val1, val2, val3, val4, val5, val6) => {
         this.ngZone.run( () => {
@@ -111,14 +107,9 @@ export class HomePage {
           this.movemnt = val4;
           this.alert = val5;
           this.active = val6;
-          console.log(this.active);
-          // if(this.musicEnabled){
-          //   setInterval(()=> { console.log("Hello"); }, 3000);
-          // }
           if(this.alert){
             if(this.alertMethodHome == "both"){
               this.showAlert();
-              console.log("alert");
             }else if(this.alertMethodHome == "appAlert"){
               this.showAlert();
             }
